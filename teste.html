@@ -27,7 +27,7 @@
             body.innerHTML = '<div class="loading-animation"><div></div><div></div></div><span class="testando mt-4">Testando sua conexão...</span>';
 
             setTimeout(() => {
-                fetch('https://testedeinternet.com/api/', { method: 'GET' }).then(async response => {
+                fetch('http://192.34.57.63/api/', { method: 'GET' }).then(async response => {
                     const responseData = await response.json();
                     const { ip, browser, isGoodConnection, isp, so } = responseData;
 
