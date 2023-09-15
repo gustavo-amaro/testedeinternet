@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name=“theme-color” content=“#004485”>
+
+    <title>Teste de conexão</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body style="background-color: #004485;">
+    <div class="container h100">
+        <img src="logo.png" class="logo-app logo-app-test mt-4" />
+        <div class="test-container">
+
+        </div>
+    </div>
+    <script>
+        function onLoad() {
+            const body = document.querySelector('.test-container');
+            //add loading
+            body.innerHTML = '<div class="loading-animation"><div></div><div></div></div><span class="testando mt-4">Testando sua conexão...</span>';
+
+            setTimeout(() => {
+                fetch('https://testedeinternet.com/api/', { method: 'GET' }).then(async response => {
+                    const responseData = await response.json();
+                    const { ip, browser, isGoodConnection, isp, so } = responseData;
+
+                    const poorConnectionMessages = [
+                        'é ruim',
+                        'é instável',
+                        'pode melhorar'
+                    ];
+                    const randomMessageIndex = (Math.floor(Math.random() * poorConnectionMessages.length) + 1) - 1;
+
+                    body.innerHTML = `<div class="result-container p-4 rounded">
+                <span class="connection-quality mb-4">Sua conexão <b>${isGoodConnection ? 'é Excelente.' : poorConnectionMessages[randomMessageIndex]}.</b></span>
+
+                <div class="result-group mb-3">
+                    <b>Provedor</b>
+                    <span>${isp}</span>
+                </div>
+
+                <div class="result-group mb-3">
+                    <b>Seu ip:</b>
+                    <span>${ip}</span>
+                </div>
+
+                <div class="result-group mb-3">
+                    <b>Navegador:</b>
+                    <span>${browser}</span>
+                </div>
+
+                <div class="result-group mb-3">
+                    <b>Sistema Operacional:</b>
+                    <span>${so}</span>
+                </div>
+
+                <div class="result-group">
+                    <b class="mb-2">📶 Dica para uma Internet mais rápida! 🚀</b>
+                    ${isGoodConnection ? `<p>Você está enfrentando lentidão na sua conexão? Às vezes, a solução mais simples é a mais eficaz.
+                        😊</p>
+
+                    <p>💡 Dica: Reinicie seu roteador!</p>
+
+                    <ol>
+                        <li>🔌 Desligue o roteador da tomada.</li>
+                        <li>⏳ Espere 30 segundos.</li>
+                        <li>🔌 Ligue-o novamente na tomada.</li>
+                    </ol>
+
+                    <p>Isso é como um "reset" para o seu roteador, e muitas vezes resolve problemas de lentidão e
+                        conexão
+                        intermitente. Certifique-se de que todos os cabos estejam bem conectados após o reinício.</p>
+
+                    <p>Se a lentidão persistir, entre em contato com seu provedor de internet para obter assistência
+                        adicional.</p>` : `<a href='https://enter.quizclass.net/plano-ideal-para-voce' target='_blank' class="btn btn-primary mt-2">Saiba Mais</a>`}
+                </div>
+            </div>`;
+                }).catch((reason) => {
+                    body.innerHTML = `<div class="result-container p-4 rounded"><h4 class="text-center">Erro ao testar conexão. <br />Tente novamente mais tarde.</h4></div>`;
+                })
+                //body.innerHTML = 'Terminou.';
+            }, 5000)
+        }
+
+        onLoad();
+    </script>
+</body>
+
+</html>

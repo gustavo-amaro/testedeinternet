@@ -1,0 +1,217 @@
+body {
+  background-color: #3a3a3a;
+}
+
+.header-app {
+  background-color: #004485;
+}
+
+.header-app h1,
+h2,
+h3,
+p {
+  color: white;
+}
+
+.header-app p {
+  font-size: 22px;
+}
+
+.btn {
+  width: 312px;
+}
+
+.btn-primary {
+  background-color: #ffe91f;
+  color: #3a3a3a !important;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primary:hover {
+  background-color: #ffe91f;
+  color: #3a3a3a;
+}
+
+.btn-primary:active {
+  background-color: #ffe91f;
+  color: #3a3a3a;
+}
+
+.logo-app {
+  max-width: 240px;
+}
+
+.person {
+  max-width: 442px;
+}
+
+.body-app {
+  background-color: #f4f4f4;
+  color: #343434;
+}
+
+.body-app * {
+  color: #343434;
+}
+
+.footer-app {
+  background-color: #3a3a3a;
+}
+
+.footer-app span {
+  color: white;
+}
+
+@media only screen and (max-width: 1280px) {
+  .person {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .btn {
+    width: 100%;
+  }
+  .result-container {
+    margin-top: 190px;
+  }
+}
+
+@keyframes lds-ripple {
+  0% {
+    top: 50px;
+    left: 50px;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  4.9% {
+    top: 50px;
+    left: 50px;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  5% {
+    top: 50px;
+    left: 50px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 0px;
+    left: 0px;
+    width: 100px;
+    height: 100px;
+    opacity: 0;
+  }
+}
+
+@keyframes opacity-animation {
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes opacity2 {
+  0% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.loading-animation {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.loading-animation div {
+  position: absolute;
+  border: 4px solid #fff;
+  opacity: 1;
+  border-radius: 50%;
+  animation: lds-ripple 1.5s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+.loading-animation div:nth-child(2) {
+  animation-delay: -0.8s;
+}
+
+.test-container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  transition: all 0.5s;
+  animation: opacity2 0.5s cubic-bezier(0, 0.2, 0.8, 1);
+  top: 0;
+  left: 0;
+}
+
+.test-container span.testando {
+  color: white;
+  animation: opacity-animation 1.5s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+  font-size: 2em;
+  text-align: center;
+}
+
+.logo-app-test {
+  z-index: 2;
+}
+
+.result-container {
+  background-color: #f4f4f440;
+  color: #fff;
+  max-width: 600px;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  animation: opacity2 1s cubic-bezier(0, 0.2, 0.8, 1);
+}
+
+.result-container * {
+  color: #fff;
+}
+
+.result-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.result-group p {
+  text-align: center;
+}
+
+.connection-quality {
+  font-size: 1.3em;
+}
